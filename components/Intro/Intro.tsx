@@ -9,6 +9,13 @@ import { FadeContainer, FadeReverse } from "@anims/index"
 import { Search } from "@anims/intro"
 
 const Intro: React.FC = () => {
+  const [query, setQuery] = React.useState("")
+
+  const changeHandler = (e: React.FormEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    setQuery(e.currentTarget.value)
+  }
+
   return (
     <S.Container variants={FadeContainer} initial="hidden" animate="visible">
       <S.Title
@@ -33,9 +40,13 @@ const Intro: React.FC = () => {
         <S.SearchIcon variants={Search}>
           <IoSearchOutline />
         </S.SearchIcon>
-        <S.SearchInput placeholder="Search sounds..." variants={FadeReverse} />
+        <S.SearchInput
+          placeholder="Search sounds..."
+          variants={FadeReverse}
+          onChange={changeHandler}
+        />
       </S.Search>
-      <Music />
+      <Music query={query} />
     </S.Container>
   )
 }

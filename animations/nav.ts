@@ -1,10 +1,8 @@
 export const icon = {
-  hidden: {
-    pathLength: 0,
-    fill: "rgba(255, 255, 255, 0)",
-  },
+  hidden: { opacity: 1, scale: 0, rotate: 180 },
   visible: {
-    pathLength: 1,
-    fill: "rgba(255, 255, 255, 1)",
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
   },
 }

@@ -1,7 +1,7 @@
 import { styled } from "@css/theme.config"
 import { motion } from "framer-motion"
 
-export const Nav = styled("nav", {
+export const Nav = styled(motion.nav, {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
@@ -22,12 +22,12 @@ export const Container = styled(motion.a, {
   textDecoration: "none",
 })
 
-export const Logomark = styled("h1", {
+export const Logomark = styled(motion.h1, {
   fontSize: "$4",
   color: "$primary",
 })
 
-export const Button = styled("a", {
+export const Button = styled(motion.a, {
   background: "$fg",
   color: "$primary",
   padding: "15px 25px",
