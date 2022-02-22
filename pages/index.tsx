@@ -1,12 +1,15 @@
-import Layout from '../components/layout'
+import { NextPage } from "next"
 
-export default function Page () {
+import Nav from "@components/Nav/Nav"
+import Intro from "@components/Intro/Intro"
+
+const Home: NextPage = () => {
   return (
-    <Layout>
-      <h1>NextAuth.js Example</h1>
-      <p>
-        This is an example site to demonstrate how to use <a href={`https://next-auth.js.org`}>NextAuth.js</a> for authentication.
-      </p>
-    </Layout>
+    <div>
+      <Nav />
+      <Intro />
+    </div>
   )
 }
+
+export default Home
