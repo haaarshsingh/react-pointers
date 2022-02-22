@@ -9,15 +9,15 @@ import { motion } from "framer-motion"
 const Nav: React.FC = () => {
   return (
     <S.Nav variants={FadeContainer} animate="visible" initial="hidden">
-      <S.Container href="/">
+      <S.Container href="/" draggable="false">
         <Logo />
         <S.Logomark variants={FadeReverse}>Groovi</S.Logomark>
       </S.Container>
       <S.Container>
-        <S.Button coloured href="/signup" variants={Fade}>
+        <S.Button coloured href="/login" variants={Fade} draggable="false">
           Get Started
         </S.Button>
-        <S.Button href="/login" variants={FadeReverse}>
+        <S.Button href="/login" variants={FadeReverse} draggable="false">
           Login
         </S.Button>
       </S.Container>

@@ -37,6 +37,7 @@ export const AudioBox = styled(motion.button, {
   height: 200,
   borderRadius: 30,
   transition: "0.2s linear",
+  userSelect: "none",
   "&:hover": {
     cursor: "pointer",
   },
