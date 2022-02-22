@@ -8,10 +8,15 @@ import * as S from "./Music.style"
 const Square: React.FC<{ category: { name: string; icon: IconType } }> = ({
   category,
 }) => {
+  const audioRef = React.useRef<HTMLAudioElement>(null)
   const volumeRef = React.useRef<HTMLInputElement>(null)
   const [volume, setVolume] = React.useState(100)
 
   const [active, setActive] = React.useState(false)
+
+  React.useEffect(() => {
+    active ? audioRef.current?.play() : audioRef.current?.pause()
+  }, [active, setActive])
 
   return (
     <S.AudioBox
@@ -20,6 +25,9 @@ const Square: React.FC<{ category: { name: string; icon: IconType } }> = ({
       className={active ? "playing" : ""}
       variants={item}
     >
+      <S.AudioController loop ref={audioRef}>
+        <source src={`/${category.name.toLowerCase()}.mp3`} type="audio/mp3" />
+      </S.AudioController>
       <category.icon />
       <S.AudioText>{category.name}</S.AudioText>
       <S.Bar

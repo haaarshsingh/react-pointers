@@ -68,3 +68,5 @@ export const Bar = styled("input", {
     transform: "scale(1.2)",
   },
 })
+
+export const AudioController = styled("audio", {})
