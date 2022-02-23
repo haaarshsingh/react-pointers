@@ -18,27 +18,36 @@ const Square: React.FC<{ category: { name: string; icon: IconType } }> = ({
     active ? audioRef.current?.play() : audioRef.current?.pause()
   }, [active, setActive])
 
+  React.useEffect(() => {
+    audioRef.current!.volume = volume / 100
+  }, [volume, setVolume])
+
   return (
     <S.AudioBox
       aria-label={category.name}
-      onClick={() => setActive((active) => !active)}
       className={active ? "playing" : ""}
       variants={item}
     >
       <S.AudioController loop ref={audioRef}>
         <source src={`/${category.name.toLowerCase()}.mp3`} type="audio/mp3" />
       </S.AudioController>
-      <category.icon />
-      <S.AudioText>{category.name}</S.AudioText>
-      <S.Bar
-        type="range"
-        min={0}
-        max={100}
-        onChange={() => setVolume(parseInt(volumeRef.current?.value!))}
-        ref={volumeRef}
-        defaultValue={volume}
+      <S.BoxMain onClick={() => setActive((active) => !active)}>
+        <category.icon />
+        <S.AudioText>{category.name}</S.AudioText>
+      </S.BoxMain>
+      <S.BarContainer
         style={{ display: active ? "flex" : "none" }}
-      />
+        onClick={() => (active ? "" : setActive((active) => !active))}
+      >
+        <S.Bar
+          type="range"
+          min={0}
+          max={100}
+          onChange={() => setVolume(parseInt(volumeRef.current?.value!))}
+          ref={volumeRef}
+          defaultValue={volume}
+        />
+      </S.BarContainer>
     </S.AudioBox>
   )
 }

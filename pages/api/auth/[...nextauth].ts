@@ -1,38 +1,30 @@
-import NextAuth from "next-auth"
-import Auth0Provider from "next-auth/providers/auth0"
-import FacebookProvider from "next-auth/providers/facebook"
-import GithubProvider from "next-auth/providers/github"
-import GoogleProvider from "next-auth/providers/google"
-import TwitterProvider from "next-auth/providers/twitter"
-// import EmailProvider from "next-auth/providers/email"
-import AppleProvider from "next-auth/providers/apple"
+import NextAuth from 'next-auth'
+import FacebookProvider from 'next-auth/providers/facebook'
+import GoogleProvider from 'next-auth/providers/google'
+import TwitterProvider from 'next-auth/providers/twitter'
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
   providers: [
-    AppleProvider({
-      clientId: process.env.APPLE_ID,
-      clientSecret: process.env.APPLE_SECRET!,
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+    }),
+    TwitterProvider({
+      clientId: process.env.TWITTER_ID,
+      clientSecret: process.env.TWITTER_SECRET,
     }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET,
     }),
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-    }),
   ],
   secret: process.env.SECRET,
-  session: { strategy: "jwt" },
+  session: { strategy: 'jwt' },
   jwt: { secret: process.env.SECRET },
   pages: {
-    signIn: "/login", // Displays signin buttons
-    // signOut: '/auth/signout', // Displays form with sign out button
-    // error: '/auth/error', // Error code passed in query string as ?error=
-    // verifyRequest: '/auth/verify-request', // Used for check email page
-    // newUser: null // If set, new users will be directed here on first sign in
+    signIn: '/login',
   },
 
   // Callbacks are asynchronous functions you can use to control what happens

@@ -1,0 +1,26 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id         String   @id @default(dbgenerated())
+    avatar_url String
+    username   String
+    email      String   @unique
+    createdAt  DateTime @default(now())
+    track      Track[]
+}
+
+model Track {
+    id      Int     @id @default(dbgenerated())
+    slug    String  @unique @db.VarChar(20)
+    private Boolean
+    sounds  Json[]
+    userId  String
+    user    User    @relation(fields: [userId], references: [id])
+}

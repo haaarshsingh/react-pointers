@@ -6,7 +6,8 @@
       "@components/*": ["components/*"],
       "@css/*": ["stitches/*"],
       "@anims/*": ["animations/*"],
-      "@pages/*": ["pages/*"]
+      "@pages/*": ["pages/*"],
+      "@samples/*": ["samples/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
