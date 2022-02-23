@@ -41,6 +41,7 @@ export const AudioBox = styled(motion.button, {
   '&:hover': {
     cursor: 'pointer',
   },
+  variants: { viewOnly: { true: { '&:hover': { cursor: 'initial' } } } },
 })
 
 export const BoxMain = styled('div', {
@@ -83,6 +84,16 @@ export const Bar = styled('input', {
   },
   '&::-webkit-slider-thumb:hover': {
     transform: 'scale(1.2)',
+  },
+  variants: {
+    viewOnly: {
+      true: {
+        '&::-webkit-slider-thumb:hover': {
+          transform: 'scale(1)',
+          cursor: 'initial',
+        },
+      },
+    },
   },
 })
 

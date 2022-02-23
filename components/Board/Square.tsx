@@ -13,6 +13,7 @@ const Square: React.FC<{
       aria-label={category.name}
       className={category.playing ? 'playing' : ''}
       variants={item}
+      viewOnly
     >
       <S.AudioController loop>
         <source src={`/${category.name.toLowerCase()}.mp3`} type='audio/mp3' />
@@ -22,7 +23,13 @@ const Square: React.FC<{
         <S.AudioText>{category.name}</S.AudioText>
       </S.BoxMain>
       <S.BarContainer style={{ display: category.playing ? 'flex' : 'none' }}>
-        <S.Bar type='range' min={0} max={100} value={category.volume} />
+        <S.Bar
+          type='range'
+          min={0}
+          max={100}
+          value={category.volume}
+          viewOnly
+        />
       </S.BarContainer>
     </S.AudioBox>
   )

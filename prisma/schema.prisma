@@ -8,19 +8,19 @@ generator client {
 }
 
 model User {
-    id         String   @id @default(dbgenerated())
+    id         Int      @id @default(autoincrement())
     avatar_url String
-    username   String
-    email      String   @unique
+    name       String   @default("Groovi User")
+    username   String   @unique
     createdAt  DateTime @default(now())
     track      Track[]
 }
 
 model Track {
-    id      Int     @id @default(dbgenerated())
+    id      Int     @id @default(autoincrement())
     slug    String  @unique @db.VarChar(20)
     private Boolean
     sounds  Json[]
-    userId  String
+    userId  Int
     user    User    @relation(fields: [userId], references: [id])
 }

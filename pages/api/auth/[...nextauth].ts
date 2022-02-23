@@ -3,8 +3,8 @@ import FacebookProvider from 'next-auth/providers/facebook'
 import GoogleProvider from 'next-auth/providers/google'
 import TwitterProvider from 'next-auth/providers/twitter'
 
-// For more information on each option (and a full list of options) go to
-// https://next-auth.js.org/configuration/options
+import prisma from 'lib/prisma'
+
 export default NextAuth({
   providers: [
     GoogleProvider({
@@ -14,6 +14,7 @@ export default NextAuth({
     TwitterProvider({
       clientId: process.env.TWITTER_ID,
       clientSecret: process.env.TWITTER_SECRET,
+      version: '2.0',
     }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_ID,
@@ -26,21 +27,37 @@ export default NextAuth({
   pages: {
     signIn: '/login',
   },
-
-  // Callbacks are asynchronous functions you can use to control what happens
-  // when an action is performed.
-  // https://next-auth.js.org/configuration/callbacks
   callbacks: {
-    // async signIn({ user, account, profile, email, credentials }) { return true },
+    async signIn({ user, account, profile, email, credentials }) {
+      const existingUser = await prisma.user.findUnique({
+        where: {
+          username: user.id,
+        },
+      })
+
+      if (!existingUser) {
+        try {
+          await prisma.user.create({
+            data: {
+              avatar_url: user.image!,
+              name: user.name!,
+              username: user.id,
+            },
+          })
+
+          return true
+        } catch (error) {
+          console.log(error)
+          return false
+        }
+      }
+
+      return true
+    },
     // async redirect({ url, baseUrl }) { return baseUrl },
     // async session({ session, token, user }) { return session },
     // async jwt({ token, user, account, profile, isNewUser }) { return token }
   },
-
-  // Events are useful for logging
-  // https://next-auth.js.org/configuration/events
   events: {},
-
-  // Enable debug messages in the console if you are having problems
   debug: false,
 })
