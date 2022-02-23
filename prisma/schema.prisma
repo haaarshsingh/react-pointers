@@ -19,8 +19,10 @@ model User {
 model Track {
     id      Int     @id @default(autoincrement())
     slug    String  @unique @db.VarChar(20)
+    title   String
     private Boolean
     sounds  Json[]
+    likes   Int
     userId  Int
     user    User    @relation(fields: [userId], references: [id])
 }

@@ -26,7 +26,6 @@ export const MusicGrid = styled(motion.div, {
 
 export const AudioBox = styled(motion.button, {
   outline: 0,
-  border: 0,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -38,7 +37,9 @@ export const AudioBox = styled(motion.button, {
   borderRadius: 30,
   transition: '0.2s linear',
   userSelect: 'none',
+  border: '$fg 2px solid',
   '&:hover': {
+    border: '$main 2px solid',
     cursor: 'pointer',
   },
   variants: { viewOnly: { true: { '&:hover': { cursor: 'initial' } } } },
