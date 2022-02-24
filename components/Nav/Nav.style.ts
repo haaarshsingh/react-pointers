@@ -10,7 +10,7 @@ export const Nav = styled(motion.nav, {
   top: 0,
   left: 0,
   right: 0,
-  borderBottom: '5px solid $black5',
+  borderBottom: '2px solid $black5',
   userSelect: 'none',
   backdropFilter: 'blur(8px)',
   zIndex: 9999,

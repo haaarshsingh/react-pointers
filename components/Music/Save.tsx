@@ -15,13 +15,37 @@ import { Fade } from '@anims/index'
 
 import { AnimatePresence } from 'framer-motion'
 
-import useClickOutside from 'use-click-outside'
+import categories from './Categories'
 
 const Save: React.FC<{
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }> = ({ open, setOpen }) => {
   const modalRef = React.useRef<HTMLDivElement>(null)
+  const titleRef = React.useRef<HTMLInputElement>(null)
+  const privateRef = React.useRef<HTMLInputElement>(null)
+
+  const PublishTrack = () => {
+    let headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+
+    const body = JSON.stringify({
+      title: titleRef.current?.value,
+      isPrivate: privateRef.current?.checked,
+      sounds: categories,
+    })
+
+    const requestOptions = {
+      method: 'POST',
+      headers: headers,
+      body: body,
+    }
+
+    fetch('/api/new', requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log('error', error))
+  }
 
   return (
     <AnimatePresence>
@@ -44,15 +68,20 @@ const Save: React.FC<{
               e.stopPropagation()
             }}
           >
-            <TitleInput placeholder='Title Your Track...' variants={Fade} />
+            <TitleInput
+              placeholder='Title Your Track...'
+              variants={Fade}
+              ref={titleRef}
+            />
             <CheckboxContainer variants={Fade}>
-              <Checkbox type='checkbox' />
+              <Checkbox type='checkbox' ref={privateRef} />
               <Label>Private</Label>
             </CheckboxContainer>
             <Button
               variants={Fade}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.8 }}
+              onClick={PublishTrack}
             >
               Publish Track
             </Button>

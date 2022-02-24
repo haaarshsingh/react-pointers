@@ -34,8 +34,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
-    "superjson": "^1.8.1",
-    "use-click-outside": "^2.0.0"
+    "superjson": "^1.8.1"
   },
   "devDependencies": {
     "@types/node": "^15.12.4",
