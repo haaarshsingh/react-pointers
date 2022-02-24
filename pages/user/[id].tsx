@@ -3,7 +3,7 @@ import { GetServerSideProps, NextPage } from 'next'
 import Nav from '@components/Nav/Nav'
 import UserProfile from '@components/Profile/Profile'
 
-import prisma from 'lib/prisma'
+import prisma from '@lib/prisma'
 import { User } from '@prisma/client'
 
 const Profile: NextPage<{ profile: User }> = ({ profile }) => {

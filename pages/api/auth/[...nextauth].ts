@@ -3,7 +3,7 @@ import FacebookProvider from 'next-auth/providers/facebook'
 import GoogleProvider from 'next-auth/providers/google'
 import TwitterProvider from 'next-auth/providers/twitter'
 
-import prisma from 'lib/prisma'
+import prisma from '@lib/prisma'
 
 export default NextAuth({
   providers: [

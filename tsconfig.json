@@ -7,7 +7,9 @@
       "@css/*": ["stitches/*"],
       "@anims/*": ["animations/*"],
       "@pages/*": ["pages/*"],
-      "@samples/*": ["samples/*"]
+      "@samples/*": ["samples/*"],
+      "@hooks/*": ["hooks/*"],
+      "@lib/*": ["lib/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

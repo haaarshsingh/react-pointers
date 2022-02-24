@@ -7,7 +7,6 @@ export const MusicContainer = styled('div', {
   width: '100vw',
   justifyContent: 'center',
   alignItems: 'center',
-  overflow: 'hidden',
 })
 
 export const MusicGrid = styled(motion.div, {
@@ -99,3 +98,93 @@ export const Bar = styled('input', {
 })
 
 export const AudioController = styled('audio', {})
+
+export const Button = styled(motion.a, {
+  color: '$primary',
+  padding: '20px 30px',
+  fontSize: '$3',
+  borderRadius: 10,
+  margin: '50px 0 70px 0',
+  textDecoration: 'none',
+  background: '$main',
+  userSelect: 'none',
+  '&:hover': { background: '#FF9ACB', cursor: 'pointer' },
+})
+
+export const Backdrop = styled(motion.div, {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  height: '100%',
+  width: '100%',
+  background: '#000000e1',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  zIndex: 9999,
+})
+
+export const BackdropContainer = styled(motion.div, {
+  width: 600,
+  height: 300,
+  borderRadius: 12,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  background: '$bg',
+})
+
+export const TitleInput = styled(motion.input, {
+  background: '$bg',
+  outline: 'none',
+  border: 'none',
+  fontSize: '$5',
+  color: '$primary',
+  marginTop: 60,
+  textAlign: 'center',
+  width: '90%',
+  userSelect: 'none',
+})
+
+export const CheckboxContainer = styled(motion.div, {
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: 'fit-content',
+  margin: '25px 0 30px 0',
+})
+
+export const Label = styled('label', {
+  color: '$primary',
+  fontSize: '$3',
+  marginLeft: 10,
+})
+
+export const Checkbox = styled('input', {
+  appearance: 'none',
+  backgroundColor: '$bg',
+  color: 'CurrentColor',
+  width: 30,
+  height: 30,
+  border: '3px solid $main',
+  borderRadius: 5,
+  transform: 'translate(0.15em)',
+  display: 'grid',
+  placeContent: 'center',
+  outline: 'none',
+  '&::before': {
+    content: '',
+    width: 30,
+    height: 30,
+    transform: 'scale(0)',
+    transition: '120ms transform ease-in-out',
+    boxShadow: 'inset 30px 30px #FFF',
+    clipPath: 'polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)',
+  },
+  '&:checked::before': {
+    transform: 'scale(1)',
+    width: 30,
+    height: 30,
+  },
+})

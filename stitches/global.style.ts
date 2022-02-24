@@ -1,35 +1,38 @@
-import { globalCss } from "./theme.config"
+import { globalCss } from './theme.config'
 
 const globalStyle = globalCss({
-  "*": {
+  '*': {
     margin: 0,
     padding: 0,
-    boxSizing: "border-box",
-    scrollBehavior: "smooth",
+    boxSizing: 'border-box',
+    scrollBehavior: 'smooth',
   },
   html: {
-    overflowX: "hidden",
+    overflowX: 'hidden',
   },
   body: {
-    background: "$bg",
-    overflowX: "hidden",
-    fontFamily: "$main",
+    background: '$bg',
+    overflowX: 'hidden',
+    fontFamily: '$main',
   },
-  "input, textArea, button, select": {
-    fontFamily: "$main",
+  'input, textArea, button, select': {
+    fontFamily: '$main',
   },
-  "::selection": {
-    background: "white",
-    color: "$bg",
+  '::selection': {
+    background: 'white',
+    color: '$bg',
   },
   img: {
-    userSelect: "none",
+    userSelect: 'none',
   },
-  "::-webkit-scrollbar": {
+  '::-webkit-scrollbar': {
     width: 10,
   },
-  "::-webkit-scrollbar-thumb": {
-    background: "$main",
+  '::-webkit-scrollbar-track': {
+    background: '$black5',
+  },
+  '::-webkit-scrollbar-thumb': {
+    background: '$main',
   },
 })
 

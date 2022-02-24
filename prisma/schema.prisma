@@ -19,10 +19,10 @@ model User {
 model Track {
     id      Int     @id @default(autoincrement())
     slug    String  @unique @db.VarChar(20)
-    title   String
-    private Boolean
+    title   String  @default("Untitled Track")
+    private Boolean @default(false)
     sounds  Json[]
-    likes   Int
-    userId  Int
-    user    User    @relation(fields: [userId], references: [id])
+    likes   Int     @default(0)
+    userId  String
+    user    User    @relation(fields: [userId], references: [username])
 }
