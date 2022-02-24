@@ -1,14 +1,16 @@
-import { NextPage } from "next"
+import { NextPage } from 'next'
 
-import Nav from "@components/Nav/Nav"
-import Music from "@components/Music/Music"
-import Login from "@components/Login/Login"
-import { Provider } from "next-auth/providers"
-import { getProviders } from "next-auth/react"
+import SEO from '@components/SEO'
+import Nav from '@components/Nav/Nav'
+import Login from '@components/Login/Login'
+
+import { Provider } from 'next-auth/providers'
+import { getProviders } from 'next-auth/react'
 
 const Authenticate: NextPage<{ providers: Provider }> = ({ providers }) => {
   return (
     <div>
+      <SEO title='Login' />
       <Nav />
       <Login provider={providers} />
     </div>

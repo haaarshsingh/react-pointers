@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { IconType } from 'react-icons/lib'
-
 import { item } from '@anims/music'
 import * as S from '@components/Music/Music.style'
 
+import { IconType } from 'react-icons/lib'
+
 const Square: React.FC<{
-  category: any
+  category: { name: string; icon: IconType; playing: boolean; volume: number }
 }> = ({ category }) => {
   return (
     <S.AudioBox

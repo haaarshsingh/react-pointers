@@ -6,6 +6,7 @@ import Square from './Square'
 
 import { Track } from '@prisma/client'
 import data, { Category } from '@samples/music'
+import { IoHeart, IoHeartOutline, IoShuffle } from 'react-icons/io5'
 
 const Board: React.FC<{ track: Track }> = ({ track }) => {
   if (
@@ -23,8 +24,25 @@ const Board: React.FC<{ track: Track }> = ({ track }) => {
     })
   }
 
+  const [liked, setLiked] = React.useState(false)
+
   return (
-    <S.MusicContainer>
+    <S.MusicContainer margin>
+      <S.TrackTitle>{track.title}</S.TrackTitle>
+      <S.TrackOptions>
+        <S.Option margin>
+          <IoShuffle size={30} />
+          Remix
+        </S.Option>
+        <S.Option
+          className={liked ? 'active' : ''}
+          onClick={() => setLiked((liked) => !liked)}
+          unactive={liked ? false : true}
+        >
+          {liked ? 'Liked' : 'Like'}
+          {liked ? <IoHeart size={30} /> : <IoHeartOutline size={30} />}
+        </S.Option>
+      </S.TrackOptions>
       <S.MusicGrid
         variants={container}
         initial='hidden'

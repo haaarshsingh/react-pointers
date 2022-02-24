@@ -1,5 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next'
 
+import SEO from '@components/SEO'
 import Nav from '@components/Nav/Nav'
 import MusicBoard from '@components/Board/Board'
 
@@ -9,6 +10,7 @@ import { Track } from '@prisma/client'
 const Board: NextPage<{ track: Track }> = ({ track }) => {
   return (
     <>
+      <SEO title={track.title} />
       <Nav />
       <MusicBoard track={track} />
     </>

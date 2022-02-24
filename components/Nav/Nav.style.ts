@@ -20,6 +20,7 @@ export const Container = styled(motion.a, {
   display: 'flex',
   alignItems: 'center',
   textDecoration: 'none',
+  outline: 'none !important',
 })
 
 export const Logomark = styled(motion.h1, {

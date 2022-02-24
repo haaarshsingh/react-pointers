@@ -7,6 +7,56 @@ export const MusicContainer = styled('div', {
   width: '100vw',
   justifyContent: 'center',
   alignItems: 'center',
+  overflow: 'hidden',
+  variants: { margin: { true: { marginTop: 175 } } },
+})
+
+export const TrackTitle = styled(motion.h1, {
+  fontSize: '$6',
+  color: '$primary',
+})
+
+export const TrackOptions = styled('div', {
+  width: 890,
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  margin: '50px 0 25px 0',
+})
+
+export const Option = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  background: '$main',
+  color: '$primary',
+  padding: 20,
+  fontSize: 20,
+  borderRadius: 7,
+  transition: '0.1s linear',
+  userSelect: 'none',
+  '&:hover': { background: '#FF9ACB' },
+  svg: {
+    marginLeft: 10,
+  },
+  variants: {
+    unactive: {
+      true: {
+        background: '$fg',
+        '&:hover': { background: '#3B3743' },
+        svg: {
+          margin: '0 0 0 10px',
+        },
+      },
+    },
+    margin: {
+      true: {
+        svg: {
+          margin: '0 10px 0 0',
+        },
+      },
+    },
+  },
 })
 
 export const MusicGrid = styled(motion.div, {
@@ -14,13 +64,13 @@ export const MusicGrid = styled(motion.div, {
   gap: 30,
   gridTemplateColumns: '200px 200px 200px 200px',
   gridTemplateRows: 'auto',
-  width: '60vw',
+  width: 'fit-content',
   justifyContent: 'center',
   marginTop: 100,
   '.playing': {
     background: '$main',
   },
-  variants: { margin: { true: { marginTop: 200 } } },
+  variants: { margin: { true: { marginTop: 0 } } },
 })
 
 export const AudioBox = styled(motion.button, {
@@ -41,7 +91,11 @@ export const AudioBox = styled(motion.button, {
     border: '$main 2px solid',
     cursor: 'pointer',
   },
-  variants: { viewOnly: { true: { '&:hover': { cursor: 'initial' } } } },
+  variants: {
+    viewOnly: {
+      true: { '&:hover': { border: '$fg 2px solid', cursor: 'initial' } },
+    },
+  },
 })
 
 export const BoxMain = styled('div', {
@@ -99,12 +153,13 @@ export const Bar = styled('input', {
 
 export const AudioController = styled('audio', {})
 
-export const Button = styled(motion.a, {
+export const Button = styled(motion.button, {
   color: '$primary',
   padding: '20px 30px',
   fontSize: '$3',
   borderRadius: 10,
   margin: '50px 0 70px 0',
+  border: 'none',
   textDecoration: 'none',
   background: '$main',
   userSelect: 'none',

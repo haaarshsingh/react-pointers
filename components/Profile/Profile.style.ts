@@ -8,7 +8,25 @@ export const Container = styled(motion.div, {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'flex-start',
-  margin: '200px 0 0 20%',
+  marginLeft: 150,
+  variants: {
+    main: {
+      true: {
+        marginTop: 200,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+      },
+    },
+  },
+})
+
+export const Grid = styled(motion.div, {
+  display: 'grid',
+  gap: 30,
+  gridTemplateColumns: '410px 450px',
+  gridTemplateRows: 'auto',
+  justifyContent: 'center',
+  marginLeft: 200,
 })
 
 export const Avatar = styled(motion.img, {
@@ -26,4 +44,45 @@ export const Name = styled(WavyText, {
 export const Username = styled(WavyText, {
   fontSize: '$4',
   color: '$black10',
+})
+
+export const TrackContainer = styled(motion.a, {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  alignItems: 'flex-start',
+  width: 400,
+  height: 200,
+  background: '$fg',
+  color: '$primary',
+  borderRadius: 12,
+  padding: 30,
+  textDecoration: 'none',
+  border: '$fg 2px solid',
+  transition: '0.1s linear',
+  '&:hover': {
+    border: '$main 2px solid',
+  },
+})
+
+export const TrackTitle = styled('h1', {
+  color: '$primary',
+  fontSize: '$4',
+})
+
+export const BottomContainer = styled('div', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  width: '100%',
+})
+
+export const InfoContainer = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '$3',
+  svg: {
+    marginRight: 5,
+  },
 })
