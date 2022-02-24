@@ -6,7 +6,7 @@ import { item } from '@anims/music'
 import * as S from '@components/Music/Music.style'
 
 const Square: React.FC<{
-  category: { name: string; icon: IconType; playing: boolean; volume: number }
+  category: any
 }> = ({ category }) => {
   return (
     <S.AudioBox

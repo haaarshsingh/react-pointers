@@ -1,3 +1,4 @@
+import { Prisma } from '@prisma/client'
 import {
   IoAirplaneOutline,
   IoBalloonOutline,
@@ -24,12 +25,24 @@ import {
   IoTimeOutline,
   IoTrainOutline,
 } from 'react-icons/io5'
+import { IconType } from 'react-icons/lib'
 
-const categories = [
+// ye saari bakchodi icontype ki vajeh se ho rhi hai iska mtlab
+//yes, goto definition kar aur check kar
+// ABBE BC
+//
+export interface Category {
+  name: string
+  icon: IconType
+  playing: boolean
+  volume: number
+}
+
+let categories: Array<Category> = [
   {
     name: 'Leaves',
     icon: IoLeafOutline,
-    playing: true,
+    playing: false,
     volume: 100,
   },
   {
@@ -47,7 +60,7 @@ const categories = [
   {
     name: 'Storm',
     icon: IoThunderstormOutline,
-    playing: true,
+    playing: false,
     volume: 100,
   },
   {

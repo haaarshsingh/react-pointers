@@ -16,15 +16,11 @@ const Profile: NextPage<{ profile: User }> = ({ profile }) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  console.log(context.params?.id?.toString())
-
   const user = await prisma?.user.findUnique({
     where: {
       username: context.params?.id?.toString(),
     },
   })
-
-  console.log(user)
 
   return {
     props: {
