@@ -6,7 +6,7 @@ import type { Session } from 'next-auth'
 
 import SEO from '@components/SEO'
 import Nav from '@components/Nav/Nav'
-import MusicBoard from '@components/Board/Board'
+import RemixBoard from '@components/Board/Remix/RemixBoard'
 
 import prisma from '@lib/prisma'
 import { Track } from '@prisma/client'
@@ -27,7 +27,7 @@ const Board: NextPage<{ track: Track; user: userWithLikes }> = ({
       {interacted ? (
         <>
           <Nav />
-          <MusicBoard track={track} user={user} />
+          <RemixBoard track={track} />
           <Footer />
         </>
       ) : (
@@ -63,28 +63,19 @@ export const getServerSideProps: GetServerSideProps<{
     },
   })
 
-  if (session) {
-    const user = await prisma?.user.findUnique({
-      where: {
-        username: session?.user?.name!,
-      },
-      include: {
-        likes: true,
-      },
-    })
-
-    return {
-      props: {
-        track: track,
-        user: user,
-        session: session,
-      },
-    }
-  }
+  const user = await prisma?.user.findUnique({
+    where: {
+      username: session?.user?.name!,
+    },
+    include: {
+      likes: true,
+    },
+  })
 
   return {
     props: {
       track: track,
+      user: user,
       session: session,
     },
   }

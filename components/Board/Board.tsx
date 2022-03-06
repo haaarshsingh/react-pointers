@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
+
 import { container } from '@anims/music'
 import * as S from '@components/Music/Music.style'
 import Square from './Square'
@@ -14,6 +17,8 @@ const Board: React.FC<{ track: Track; user: userWithLikes }> = ({
   track,
   user,
 }) => {
+  const router = useRouter()
+
   if (
     track.sounds &&
     typeof track.sounds === 'object' &&
@@ -29,43 +34,46 @@ const Board: React.FC<{ track: Track; user: userWithLikes }> = ({
     })
   }
 
-  const likedPost = user.likes.filter((like) => like.trackSlug == track.slug)
+  const likedPost = user?.likes?.filter((like) => like.trackSlug == track.slug)
+  const [liked, setLiked] = React.useState(likedPost?.length > 0 ? true : false)
 
-  const [liked, setLiked] = React.useState(likedPost.length > 0 ? true : false)
+  const { data: session, status } = useSession()
 
   return (
     <S.MusicContainer margin>
       <S.TrackTitle>{track.title}</S.TrackTitle>
       <S.TrackOptions>
-        <S.Option margin>
+        <S.Option margin href={`/remix/${track.slug}`}>
           <IoShuffle size={30} />
           Remix
         </S.Option>
         <S.Option
           className={liked ? 'active' : ''}
           onClick={async () => {
-            let headers = new Headers()
-            headers.append('Content-Type', 'application/json')
+            if (session) {
+              let headers = new Headers()
+              headers.append('Content-Type', 'application/json')
 
-            const body = JSON.stringify({
-              slug: track.slug,
-              removing: liked ? true : false,
-            })
+              const body = JSON.stringify({
+                slug: track.slug,
+                removing: liked ? true : false,
+              })
 
-            console.log(body)
+              console.log(body)
 
-            const requestOptions = {
-              method: 'POST',
-              headers: headers,
-              body: body,
-            }
+              const requestOptions = {
+                method: 'POST',
+                headers: headers,
+                body: body,
+              }
 
-            await fetch('/api/like', requestOptions)
-              .then((response) => response.text())
-              .then((result) => console.log(result))
-              .catch((error) => console.log('error', error))
+              await fetch('/api/like', requestOptions)
+                .then((response) => response.text())
+                .then((result) => console.log(result))
+                .catch((error) => console.log('error', error))
 
-            setLiked((liked) => !liked)
+              setLiked((liked) => !liked)
+            } else router.push(`/login`)
           }}
           unactive={liked ? false : true}
         >

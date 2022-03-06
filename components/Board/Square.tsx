@@ -10,7 +10,7 @@ const Square: React.FC<{
 }> = ({ category }) => {
   const audio = React.useRef<HTMLAudioElement>(null)
   React.useEffect(() => {
-    audio.current!.play()
+    category.playing ? audio.current!.play() : audio.current?.pause()
   }, [])
 
   return (

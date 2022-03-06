@@ -24,12 +24,13 @@ export const TrackOptions = styled('div', {
   margin: '50px 0 25px 0',
 })
 
-export const Option = styled('div', {
+export const Option = styled('a', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
   background: '$main',
   color: '$primary',
+  textDecoration: 'none',
   padding: 20,
   fontSize: 20,
   borderRadius: 7,
