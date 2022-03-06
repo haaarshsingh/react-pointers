@@ -5,9 +5,10 @@ import Nav from '@components/Nav/Nav'
 import UserProfile from '@components/Profile/Profile'
 
 import prisma from '@lib/prisma'
-import { Track, User } from '@prisma/client'
+import { User } from '@prisma/client'
+import { TrackWithLikes } from '@typings/index'
 
-const Profile: NextPage<{ profile: User; tracks: Track[] }> = ({
+const Profile: NextPage<{ profile: User; tracks: TrackWithLikes[] }> = ({
   profile,
   tracks,
 }) => {
@@ -30,6 +31,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const tracks = await prisma.track.findMany({
     where: {
       userId: user?.username,
+    },
+    include: {
+      likes: true,
     },
   })
 

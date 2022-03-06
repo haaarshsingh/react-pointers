@@ -1,7 +1,7 @@
 import { styled } from '@css/theme.config'
 import { motion } from 'framer-motion'
 
-export const MusicContainer = styled('div', {
+export const MusicContainer = styled(motion.div, {
   display: 'flex',
   flexDirection: 'column',
   width: '100vw',
@@ -242,4 +242,16 @@ export const Checkbox = styled('input', {
     width: 30,
     height: 30,
   },
+})
+
+export const StartContainer = styled(motion.div, {
+  background: '#33FF7A70',
+  borderRadius: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+})
+
+export const PlayBtn = styled('svg', {
+  zIndex: 100,
 })

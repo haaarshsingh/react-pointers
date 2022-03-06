@@ -14,16 +14,26 @@ model User {
     username   String   @unique
     createdAt  DateTime @default(now())
     track      Track[]
+    likes      Like[]
 }
 
 model Track {
     id        Int      @id @default(autoincrement())
-    slug      String   @unique @db.VarChar(20)
+    slug      String   @unique
     title     String   @default("Untitled Track")
     private   Boolean  @default(false)
     sounds    Json[]
-    likes     Int      @default(0)
-    userId    String
+    likes     Like[]
     createdAt DateTime @default(now())
+    userId    String
+    user      User     @relation(fields: [userId], references: [username])
+}
+
+model Like {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    trackSlug String
+    track     Track    @relation(fields: [trackSlug], references: [slug])
+    userId    String
     user      User     @relation(fields: [userId], references: [username])
 }

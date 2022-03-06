@@ -8,6 +8,9 @@ import Square from './Square'
 import categories from './Categories'
 import { IconType } from 'react-icons/lib'
 
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
+
 export const filter = (
   options: { name: string; icon: IconType }[] | undefined,
   query: string
@@ -21,8 +24,10 @@ export const filter = (
 }
 
 const Music: React.FC<{ query: string }> = ({ query }) => {
-  let filteredResults = filter(categories, query)
+  const router = useRouter()
+  const { data: session, status } = useSession()
 
+  let filteredResults = filter(categories, query)
   const [open, setOpen] = React.useState(false)
 
   return (
@@ -35,7 +40,7 @@ const Music: React.FC<{ query: string }> = ({ query }) => {
       <S.Button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.8 }}
-        onClick={() => setOpen(true)}
+        onClick={() => (session ? setOpen(true) : router.push('/login'))}
       >
         Publish Track
       </S.Button>

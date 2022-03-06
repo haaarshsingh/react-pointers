@@ -5,10 +5,15 @@ import * as S from '@components/Music/Music.style'
 import Square from './Square'
 
 import { Track } from '@prisma/client'
+import { userWithLikes } from '@typings/index'
 import data, { Category } from '@samples/music'
+
 import { IoHeart, IoHeartOutline, IoShuffle } from 'react-icons/io5'
 
-const Board: React.FC<{ track: Track }> = ({ track }) => {
+const Board: React.FC<{ track: Track; user: userWithLikes }> = ({
+  track,
+  user,
+}) => {
   if (
     track.sounds &&
     typeof track.sounds === 'object' &&
@@ -24,7 +29,9 @@ const Board: React.FC<{ track: Track }> = ({ track }) => {
     })
   }
 
-  const [liked, setLiked] = React.useState(false)
+  const likedPost = user.likes.filter((like) => like.trackSlug == track.slug)
+
+  const [liked, setLiked] = React.useState(likedPost.length > 0 ? true : false)
 
   return (
     <S.MusicContainer margin>
@@ -36,7 +43,30 @@ const Board: React.FC<{ track: Track }> = ({ track }) => {
         </S.Option>
         <S.Option
           className={liked ? 'active' : ''}
-          onClick={() => setLiked((liked) => !liked)}
+          onClick={async () => {
+            let headers = new Headers()
+            headers.append('Content-Type', 'application/json')
+
+            const body = JSON.stringify({
+              slug: track.slug,
+              removing: liked ? true : false,
+            })
+
+            console.log(body)
+
+            const requestOptions = {
+              method: 'POST',
+              headers: headers,
+              body: body,
+            }
+
+            await fetch('/api/like', requestOptions)
+              .then((response) => response.text())
+              .then((result) => console.log(result))
+              .catch((error) => console.log('error', error))
+
+            setLiked((liked) => !liked)
+          }}
           unactive={liked ? false : true}
         >
           {liked ? 'Liked' : 'Like'}

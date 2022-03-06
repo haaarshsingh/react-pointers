@@ -86,3 +86,27 @@ export const InfoContainer = styled('div', {
     marginRight: 5,
   },
 })
+
+export const EmptyContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '100%',
+  height: '50vh',
+})
+
+export const EmptyText = styled('h1', {
+  color: '$primary',
+  fontSize: '$6',
+})
+
+export const Bottom = styled('p', {
+  color: '$primary',
+  fontSize: '$3',
+  marginTop: 20,
+  a: {
+    color: '$main',
+    textDecoration: 'none',
+  },
+})

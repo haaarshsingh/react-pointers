@@ -3,7 +3,7 @@ import React from 'react'
 import { styled } from '@stitches/react'
 import { motion } from 'framer-motion'
 
-const Container = styled('div', {
+export const Container = styled(motion.div, {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -13,26 +13,16 @@ const Container = styled('div', {
 })
 
 export const StartBtnContainer = styled(motion.div, {
-  background: '#33FF7A70',
+  background: '#ffa2f36e',
   borderRadius: '100%',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
 })
 
-const PlayBtn = styled('svg', {
+export const PlayBtn = styled('svg', {
   zIndex: 100,
 })
-
-const StartScreen: React.FC = () => {
-  return (
-    <Container>
-      <StartBtnContainer whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-        <PlayIcon size={100} />
-      </StartBtnContainer>
-    </Container>
-  )
-}
 
 export const PlayIcon: React.FC<{ size: number }> = ({ size }) => {
   return (
@@ -53,5 +43,3 @@ export const PlayIcon: React.FC<{ size: number }> = ({ size }) => {
     </PlayBtn>
   )
 }
-
-export default StartScreen

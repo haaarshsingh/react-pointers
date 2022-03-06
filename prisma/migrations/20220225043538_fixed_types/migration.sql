@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Track" ALTER COLUMN "slug" SET DATA TYPE TEXT;

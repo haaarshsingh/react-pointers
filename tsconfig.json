@@ -9,6 +9,7 @@
       "@pages/*": ["pages/*"],
       "@samples/*": ["samples/*"],
       "@hooks/*": ["hooks/*"],
+      "@typings/*": ["typings/*"],
       "@lib/*": ["lib/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],

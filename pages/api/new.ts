@@ -9,19 +9,19 @@ const newTrack = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req })
 
   const { title, isPrivate, sounds } = req.body
+  const slug = nanoid(5)
 
   return prisma.track
     .create({
       data: {
-        slug: nanoid(5),
+        slug: slug,
         title: title,
         private: isPrivate,
         sounds: sounds,
-        likes: 0,
         user: { connect: { username: session?.user?.name! } },
       },
     })
-    .then(() => res.status(200).end())
+    .then(() => res.status(200).json({ id: slug }))
     .catch((err) => {
       console.log(err)
       res.status(409).end()

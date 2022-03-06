@@ -1,7 +1,8 @@
-import { SessionProvider } from "next-auth/react"
-import type { AppProps } from "next/app"
+import { SessionProvider } from 'next-auth/react'
+import type { AppProps } from 'next/app'
 
-import globalStyle from "@css/global.style"
+import '@components/Loader.css'
+import globalStyle from '@css/global.style'
 
 const Groovi = ({ Component, pageProps }: AppProps) => {
   globalStyle()

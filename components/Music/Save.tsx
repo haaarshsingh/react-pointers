@@ -16,11 +16,14 @@ import { Fade } from '@anims/index'
 import { AnimatePresence } from 'framer-motion'
 
 import categories from './Categories'
+import { useRouter } from 'next/router'
 
 const Save: React.FC<{
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }> = ({ open, setOpen }) => {
+  const router = useRouter()
+
   const modalRef = React.useRef<HTMLDivElement>(null)
   const titleRef = React.useRef<HTMLInputElement>(null)
   const privateRef = React.useRef<HTMLInputElement>(null)
@@ -42,8 +45,8 @@ const Save: React.FC<{
     }
 
     fetch('/api/new', requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
+      .then((response) => response.json())
+      .then((result) => router.push(`/track/${result.id}`))
       .catch((error) => console.log('error', error))
   }
 

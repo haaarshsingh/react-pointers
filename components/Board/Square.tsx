@@ -8,6 +8,11 @@ import { IconType } from 'react-icons/lib'
 const Square: React.FC<{
   category: { name: string; icon: IconType; playing: boolean; volume: number }
 }> = ({ category }) => {
+  const audio = React.useRef<HTMLAudioElement>(null)
+  React.useEffect(() => {
+    audio.current!.play()
+  }, [])
+
   return (
     <S.AudioBox
       aria-label={category.name}
@@ -15,7 +20,7 @@ const Square: React.FC<{
       variants={item}
       viewOnly
     >
-      <S.AudioController loop>
+      <S.AudioController loop ref={audio}>
         <source src={`/${category.name.toLowerCase()}.mp3`} type='audio/mp3' />
       </S.AudioController>
       <S.BoxMain>
@@ -29,6 +34,7 @@ const Square: React.FC<{
           max={100}
           value={category.volume}
           viewOnly
+          readOnly
         />
       </S.BarContainer>
     </S.AudioBox>
