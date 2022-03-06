@@ -1,7 +1,14 @@
 import React from 'react'
 
 import { container } from '@anims/music'
+
 import * as S from './Music.style'
+import {
+  EmptyContainer,
+  EmptyText,
+  Bottom,
+} from '@components/Profile/Profile.style'
+
 import SaveModal from './Save'
 import Square from './Square'
 
@@ -32,11 +39,21 @@ const Music: React.FC<{ query: string }> = ({ query }) => {
 
   return (
     <S.MusicContainer>
-      <S.MusicGrid variants={container} initial='hidden' animate='visible'>
-        {filteredResults!.map((category, i) => (
-          <Square category={category} key={i} index={i} />
-        ))}
-      </S.MusicGrid>
+      {filteredResults!.length <= 0 ? (
+        <EmptyContainer>
+          <EmptyText>No Sounds Found 😭</EmptyText>
+          <Bottom>
+            Want a sound to be added?{' '}
+            <a href='https://github.com/harshhhdev/groovi'>Open an issue</a>
+          </Bottom>
+        </EmptyContainer>
+      ) : (
+        <S.MusicGrid variants={container} initial='hidden' animate='visible'>
+          {filteredResults!.map((category, i) => (
+            <Square category={category} key={i} index={i} />
+          ))}
+        </S.MusicGrid>
+      )}
       <S.Button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.8 }}
@@ -44,7 +61,7 @@ const Music: React.FC<{ query: string }> = ({ query }) => {
       >
         Publish Track
       </S.Button>
-      <SaveModal open={open} setOpen={setOpen} />
+      <SaveModal open={open} setOpen={setOpen} remix={false} />
     </S.MusicContainer>
   )
 }

@@ -13,7 +13,6 @@ import SaveModal from '@components/Music/Save'
 
 import { Track } from '@prisma/client'
 
-import { userWithLikes } from '@typings/index'
 import data, { Category } from '@samples/music'
 
 import { IoSearchOutline } from 'react-icons/io5'
@@ -109,7 +108,7 @@ const Music: React.FC<{ query: string; categories: Category[] }> = ({
     <S.MusicContainer>
       <S.MusicGrid variants={container} initial='hidden' animate='visible'>
         {filteredResults!.map((category, i) => (
-          <Square category={category} key={i} index={i} />
+          <Square category={category} data={data} key={i} index={i} />
         ))}
       </S.MusicGrid>
       <S.Button
@@ -119,7 +118,7 @@ const Music: React.FC<{ query: string; categories: Category[] }> = ({
       >
         Publish Track
       </S.Button>
-      <SaveModal open={open} setOpen={setOpen} />
+      <SaveModal open={open} setOpen={setOpen} remix={true} remixData={data} />
     </S.MusicContainer>
   )
 }

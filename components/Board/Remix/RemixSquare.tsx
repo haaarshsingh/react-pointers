@@ -4,13 +4,13 @@ import { item } from '@anims/music'
 import * as S from '@components/Music/Music.style'
 
 import { IconType } from 'react-icons/lib'
-
-import categories from '@components/Music/Categories'
+import { Category } from '@samples/music'
 
 const Square: React.FC<{
   category: { name: string; icon: IconType; playing: boolean; volume: number }
   index: number
-}> = ({ category, index }) => {
+  data: Category[]
+}> = ({ category, index, data }) => {
   const audioRef = React.useRef<HTMLAudioElement>(null)
   const volumeRef = React.useRef<HTMLInputElement>(null)
 
@@ -19,13 +19,13 @@ const Square: React.FC<{
 
   const Toggle = () => {
     setActive((active) => !active)
-    categories[index].playing = true
+    data[index].playing = true
   }
 
   const ToggleVolume = () => {
     const intVolume = parseInt(volumeRef.current?.value!)
     setVolume(intVolume)
-    categories[index].volume = intVolume
+    data[index].volume = intVolume
   }
 
   React.useEffect(() => {
@@ -57,7 +57,14 @@ const Square: React.FC<{
         style={{ display: active ? 'flex' : 'none' }}
         onClick={() => (active ? '' : Toggle)}
       >
-        <S.Bar type='range' min={0} max={100} defaultValue={volume} />
+        <S.Bar
+          type='range'
+          min={0}
+          max={100}
+          onChange={ToggleVolume}
+          ref={volumeRef}
+          defaultValue={volume}
+        />
       </S.BarContainer>
     </S.AudioBox>
   )

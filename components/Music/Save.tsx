@@ -16,12 +16,16 @@ import { Fade } from '@anims/index'
 import { AnimatePresence } from 'framer-motion'
 
 import categories from './Categories'
+import { Category } from '@samples/music'
+
 import { useRouter } from 'next/router'
 
 const Save: React.FC<{
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
-}> = ({ open, setOpen }) => {
+  remix: boolean
+  remixData?: Category[]
+}> = ({ open, setOpen, remix, remixData }) => {
   const router = useRouter()
 
   const modalRef = React.useRef<HTMLDivElement>(null)
@@ -35,7 +39,7 @@ const Save: React.FC<{
     const body = JSON.stringify({
       title: titleRef.current?.value,
       isPrivate: privateRef.current?.checked,
-      sounds: categories,
+      sounds: remix ? remixData : categories,
     })
 
     const requestOptions = {

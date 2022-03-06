@@ -34,10 +34,6 @@ const globalStyle = globalCss({
   '::-webkit-scrollbar-thumb': {
     background: '$main',
   },
-  ':focus': {
-    outline: '2px solid #FF7ABA',
-    outlineOffset: 5,
-  },
 })
 
 export default globalStyle
