@@ -165,7 +165,7 @@ let categories = [
     volume: 100,
   },
   {
-    name: 'Cafè',
+    name: 'Cafe',
     icon: IoCafeOutline,
     playing: false,
     volume: 100,
