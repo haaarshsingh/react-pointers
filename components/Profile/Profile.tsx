@@ -1,18 +1,23 @@
 import React from 'react'
+import { useSession } from 'next-auth/react'
 
 import * as S from './Profile.style'
 
-import { User } from '@prisma/client'
-import { TrackWithLikes } from '@typings/index'
+import { Track, User } from '@prisma/client'
 
 import * as anims from '@anims/index'
 
 import { IoCalendar, IoHeart } from 'react-icons/io5'
 
-const Profile: React.FC<{ profile: User; tracks: TrackWithLikes[] }> = ({
+const Profile: React.FC<{ profile: User; tracks: Track[] }> = ({
   profile,
   tracks,
 }) => {
+  const { data: session, status } = useSession()
+
+  if (session?.user?.name !== profile.username)
+    tracks = tracks.filter((track) => !track.private)
+
   return (
     <S.Container
       variants={anims.FadeContainer}

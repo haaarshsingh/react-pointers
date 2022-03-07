@@ -18,6 +18,7 @@ export const StartBtnContainer = styled(motion.div, {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  cursor: 'pointer',
 })
 
 export const PlayBtn = styled('svg', {

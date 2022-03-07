@@ -1,23 +1,27 @@
 import { GetServerSideProps, NextPage } from 'next'
 
+import Redirect from '@pages/404'
 import SEO from '@components/SEO'
 import Nav from '@components/Nav/Nav'
 import UserProfile from '@components/Profile/Profile'
+import Footer from '@components/Footer'
 
 import prisma from '@lib/prisma'
-import { User } from '@prisma/client'
-import { TrackWithLikes } from '@typings/index'
+import { Track, User } from '@prisma/client'
 
-const Profile: NextPage<{ profile: User; tracks: TrackWithLikes[] }> = ({
+const Profile: NextPage<{ profile: User; tracks: Track[] }> = ({
   profile,
   tracks,
 }) => {
+  if (!profile) return <Redirect />
+
   return (
-    <div>
+    <>
       <SEO title={profile.name} />
       <Nav />
       <UserProfile profile={profile} tracks={tracks} />
-    </div>
+      <Footer />
+    </>
   )
 }
 

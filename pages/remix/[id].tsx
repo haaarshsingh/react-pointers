@@ -4,6 +4,7 @@ import { GetServerSideProps, NextPage } from 'next'
 import { getSession } from 'next-auth/react'
 import type { Session } from 'next-auth'
 
+import Redirect from '@pages/404'
 import SEO from '@components/SEO'
 import Nav from '@components/Nav/Nav'
 import RemixBoard from '@components/Board/Remix/RemixBoard'
@@ -11,14 +12,12 @@ import RemixBoard from '@components/Board/Remix/RemixBoard'
 import prisma from '@lib/prisma'
 import { Track } from '@prisma/client'
 import Footer from '@components/Footer'
-import { userWithLikes } from '@typings/index'
 
 import * as S from '@components/Board/Start.style'
 
-const Board: NextPage<{ track: Track; user: userWithLikes }> = ({
-  track,
-  user,
-}) => {
+const Board: NextPage<{ track: Track }> = ({ track }) => {
+  if (!track) return <Redirect />
+
   const [interacted, setInteracted] = useState(false)
 
   return (

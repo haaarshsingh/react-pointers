@@ -8,7 +8,7 @@ export const Container = styled(motion.div, {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'flex-start',
-  marginLeft: 150,
+  margin: '0 0 200px 150px',
   variants: {
     main: {
       true: {

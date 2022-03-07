@@ -59,8 +59,6 @@ const Board: React.FC<{ track: Track; user: userWithLikes }> = ({
                 removing: liked ? true : false,
               })
 
-              console.log(body)
-
               const requestOptions = {
                 method: 'POST',
                 headers: headers,
@@ -69,7 +67,7 @@ const Board: React.FC<{ track: Track; user: userWithLikes }> = ({
 
               await fetch('/api/like', requestOptions)
                 .then((response) => response.text())
-                .then((result) => console.log(result))
+                .then((result) => result)
                 .catch((error) => console.log('error', error))
 
               setLiked((liked) => !liked)
