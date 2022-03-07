@@ -25,11 +25,11 @@ const SEO: React.FC<{ title: string }> = ({ title }) => {
       />
       <meta
         property='og:image'
-        content='https://github.com/harshhhdev/issure/blob/main/public/Banner.png?raw=true'
+        content='https://github.com/harshhhdev/groovi/blob/main/public/Banner.png?raw=true'
       />
       <meta
         property='twitter:image'
-        content='https://github.com/harshhhdev/issure/blob/main/public/Banner.png?raw=true'
+        content='https://github.com/harshhhdev/groovi/blob/main/public/Banner.png?raw=true'
       />
     </Head>
   )

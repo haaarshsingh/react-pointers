@@ -22,6 +22,7 @@ export const TrackOptions = styled('div', {
   justifyContent: 'space-between',
   alignItems: 'center',
   margin: '50px 0 25px 0',
+  '@iPhonePlus': { width: 330 },
 })
 
 export const Option = styled('a', {
@@ -72,6 +73,7 @@ export const MusicGrid = styled(motion.div, {
     background: '$main',
   },
   variants: { margin: { true: { marginTop: 0 } } },
+  '@iPhonePlus': { gridTemplateColumns: '150px 150px' },
 })
 
 export const AudioBox = styled(motion.button, {
@@ -97,6 +99,10 @@ export const AudioBox = styled(motion.button, {
       true: { '&:hover': { border: '$fg 2px solid', cursor: 'initial' } },
     },
   },
+  '@iPhonePlus': {
+    width: 150,
+    height: 150,
+  },
 })
 
 export const BoxMain = styled('div', {
@@ -117,7 +123,7 @@ export const BarContainer = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  width: '100%',
+  width: '50%',
   height: '10%',
   marginBottom: 20,
 })
@@ -128,6 +134,7 @@ export const Bar = styled('input', {
   outline: 'none',
   background: '$primary',
   borderRadius: 10,
+  '@iPhonePlus': { width: 100 },
   '&::-webkit-slider-thumb': {
     appearance: 'none',
     width: 20,
@@ -189,6 +196,7 @@ export const BackdropContainer = styled(motion.div, {
   justifyContent: 'center',
   alignItems: 'center',
   background: '$bg',
+  '@iPhonePlus': { width: '90%' },
 })
 
 export const TitleInput = styled(motion.input, {

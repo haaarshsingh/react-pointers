@@ -14,6 +14,7 @@ export const Nav = styled(motion.nav, {
   userSelect: 'none',
   backdropFilter: 'blur(8px)',
   zIndex: 9999,
+  '@iPhonePlus': { justifyContent: 'space', padding: '30px 20px' },
 })
 
 export const Container = styled(motion.a, {
@@ -43,6 +44,7 @@ export const Button = styled(motion.a, {
         background: '$main',
         '&:hover': { background: '#FF9ACB' },
         marginRight: 20,
+        '@iPhonePlus': { display: 'none' },
       },
     },
   },

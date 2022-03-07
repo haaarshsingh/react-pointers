@@ -15,6 +15,7 @@ export const Container = styled(motion.div, {
 export const Title = styled(WavyText, {
   fontSize: '$6',
   color: '$primary',
+  '@iPhonePlus': { fontSize: 26 },
   variants: { colour: { true: { color: '$main ' } } },
 })
 
@@ -33,6 +34,7 @@ export const Search = styled(motion.div, {
   transition: '0.2s linear',
   '&:hover': { border: '2px solid $main' },
   '&:focus-within': { border: '2px solid $main' },
+  '@iPhonePlus': { minWidth: 300 },
 })
 
 export const Description = styled(motion.p, {
@@ -41,6 +43,7 @@ export const Description = styled(motion.p, {
   width: 500,
   textAlign: 'center',
   margin: '30px 0 50px 0',
+  '@iPhonePlus': { width: '90vw' },
 })
 
 export const SearchInput = styled(motion.input, {

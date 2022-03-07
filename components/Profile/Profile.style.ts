@@ -9,12 +9,20 @@ export const Container = styled(motion.div, {
   justifyContent: 'center',
   alignItems: 'flex-start',
   margin: '0 0 200px 150px',
+  // NOTE: for some reason @iPhonePlus isn't working?
+  '@media screen and (max-width: 425px)': {
+    margin: '0px',
+    alignItems: 'center',
+  },
   variants: {
     main: {
       true: {
         marginTop: 200,
         flexDirection: 'row',
         justifyContent: 'flex-start',
+        '@media screen and (max-width: 425px)': {
+          flexDirection: 'column',
+        },
       },
     },
   },
@@ -27,6 +35,11 @@ export const Grid = styled(motion.div, {
   gridTemplateRows: 'auto',
   justifyContent: 'center',
   marginLeft: 200,
+  '@media screen and (max-width: 425px)': {
+    gridTemplateColumns: '300px',
+    marginLeft: 0,
+    marginTop: 100,
+  },
 })
 
 export const Avatar = styled(motion.img, {
@@ -63,11 +76,16 @@ export const TrackContainer = styled(motion.a, {
   '&:hover': {
     border: '$main 2px solid',
   },
+  '@media screen and (max-width: 425px)': { width: 300 },
 })
 
 export const TrackTitle = styled('h1', {
   color: '$primary',
   fontSize: '$4',
+  overflow: 'hidden',
+  width: '90%',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'nowrap',
 })
 
 export const BottomContainer = styled('div', {
