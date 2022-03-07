@@ -112,6 +112,7 @@ export const EmptyContainer = styled('div', {
   alignItems: 'center',
   width: '100%',
   height: '50vh',
+  '@media only screen and (max-width: 425px)': { textAlign: 'center' },
 })
 
 export const EmptyText = styled('h1', {
