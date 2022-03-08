@@ -13,12 +13,11 @@ const Square: React.FC<{
   const audioRef = React.useRef<HTMLAudioElement>(null)
   const volumeRef = React.useRef<HTMLInputElement>(null)
   const [volume, setVolume] = React.useState(100)
-
   const [active, setActive] = React.useState(false)
 
   const Toggle = () => {
     setActive((active) => !active)
-    categories[index].playing = true
+    categories[index].playing = !categories[index].playing
   }
 
   const ToggleVolume = () => {

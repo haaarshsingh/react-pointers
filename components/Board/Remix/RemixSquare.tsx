@@ -19,7 +19,7 @@ const Square: React.FC<{
 
   const Toggle = () => {
     setActive((active) => !active)
-    data[index].playing = true
+    data[index].playing = !data[index].playing
   }
 
   const ToggleVolume = () => {
