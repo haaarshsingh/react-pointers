@@ -1,40 +1,24 @@
 {
-  "name": "groovi",
-  "version": "0.0.1",
+  "name": "react-pointers",
   "private": true,
-  "description": "🍃 Create soothing focus mixes",
-  "repository": "https://github.com/harshhhdev/groovi.git",
-  "bugs": {
-    "url": "https://github.com/harshhhdev/groovi/issues"
-  },
-  "homepage": "http://groovi.hxrsh.in",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "types": "tsc --noEmit"
-  },
-  "author": "Harsh Singh <hi.harsh@protonmail.ch>",
-  "license": "MIT",
-  "dependencies": {
-    "@prisma/client": "^3.10.0",
-    "@stitches/react": "^1.2.6",
-    "babel-plugin-superjson-next": "^0.4.3",
-    "framer-motion": "^6.2.7",
-    "nanoid": "^3.3.1",
-    "next": "^11.0.0",
-    "next-auth": "^4.0.1",
-    "prisma": "^3.10.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1",
-    "superjson": "^1.8.1"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@types/node": "^15.12.4",
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.8",
-    "kraftuur": "^1.0.2",
-    "typescript": "^4.3.4"
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "prettier": "^3.1.1",
+    "turbo": "latest"
+  },
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=18"
   }
 }

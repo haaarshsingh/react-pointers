@@ -1,31 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": ["components/*"],
-      "@css/*": ["stitches/*"],
-      "@anims/*": ["animations/*"],
-      "@pages/*": ["pages/*"],
-      "@samples/*": ["samples/*"],
-      "@hooks/*": ["hooks/*"],
-      "@typings/*": ["typings/*"],
-      "@lib/*": ["lib/*"]
-    },
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "typeRoots": ["typings"]
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "extends": "@repo/typescript-config/base.json"
 }
