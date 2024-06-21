@@ -16,11 +16,6 @@ img {
   color: rgb(255, 255, 255);
 }
 
-body,
-body * {
-  font-family: var(--font-display);
-}
-
 code *,
 pre *,
 tt,
@@ -29,9 +24,40 @@ samp {
   font-family: var(--font-mono) !important;
 }
 
+p,
+span,
+a,
+button,
+input {
+  font-family: var(--font-sans);
+}
+
 h1,
 h2,
 h3,
 h4 {
-  @apply text-slate-950 dark:text-slate-50;
+  font-family: var(--font-display);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+span,
+button,
+input,
+li {
+  @apply text-neutral-950 dark:text-neutral-50;
+}
+
+.dashed {
+  background: repeating-linear-gradient(
+    45deg,
+    #e5e5e5 0px,
+    #e5e5e5 6px,
+    transparent 6px,
+    transparent 9px
+  );
 }

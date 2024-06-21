@@ -6,37 +6,24 @@ import clsx from "clsx";
 import { FC, ReactNode } from "react";
 import Providers from "./providers";
 
-const tt_interfaces = localFont({
-  src: [
-    {
-      path: "./fonts/TTInterfaces-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/TTInterfaces-Medium.woff2",
-      weight: "500",
-      style: "medium",
-    },
-    {
-      path: "./fonts/TTInterfaces-Semibold.woff2",
-      weight: "600",
-      style: "semibold",
-    },
-    {
-      path: "./fonts/TTInterfaces-Bold.woff2",
-      weight: "700",
-      style: "bold",
-    },
-  ],
-  display: "swap",
+const inter = localFont({
+  src: "./fonts/inter.woff2",
+  weight: "700",
   variable: "--font-display",
+  display: "swap",
+});
+
+const sohne = localFont({
+  src: "./fonts/sohne.woff2",
+  weight: "400",
+  variable: "--font-sans",
+  display: "swap",
 });
 
 const fira_code = localFont({
   src: [
     {
-      path: "./fonts/FiraCode-Regular.woff2",
+      path: "./fonts/fira.woff2",
       weight: "400",
       style: "normal",
     },
@@ -127,7 +114,8 @@ export default (({ children }) => (
   <html lang="en" suppressHydrationWarning>
     <body
       className={clsx(
-        tt_interfaces.variable,
+        inter.variable,
+        sohne.variable,
         fira_code.variable,
         "bg-slate-50 dark:bg-slate-950",
       )}
