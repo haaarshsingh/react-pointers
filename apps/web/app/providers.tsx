@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type FC, type ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
+import { CursorProvider } from "react-pointers";
 
 export default (({ children }) => {
   const [mounted, setMounted] = useState(false);
@@ -11,7 +12,7 @@ export default (({ children }) => {
 
   return (
     <ThemeProvider defaultTheme="system" enableSystem attribute="class">
-      {children}
+      <CursorProvider>{children}</CursorProvider>
     </ThemeProvider>
   );
 }) as FC<{ children: ReactNode }>;

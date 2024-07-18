@@ -1,3 +1,4 @@
+import Cursor from "../components/Cursor";
 import Demo from "../components/Demo";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
@@ -9,5 +10,6 @@ export default () => (
     <Hero />
     <Demo />
     <Footer />
+    <Cursor />
   </>
 );

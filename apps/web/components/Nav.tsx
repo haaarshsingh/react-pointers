@@ -2,7 +2,6 @@ import Link from "next/link";
 import { BsDiscord, BsGithub, BsTwitter } from "react-icons/bs";
 import { FiArrowRight } from "react-icons/fi";
 import Layout from "./Layout";
-import Grid from "./Grid";
 
 const socials = [
   {
@@ -36,7 +35,7 @@ export default () => (
             rel="noreferrer"
             key={index}
             aria-label={social.label}
-            className="text-lg text-neutral-400 transition-colors hover:text-neutral-500"
+            className="text-lg text-neutral-400 transition-colors hover:text-neutral-500 dark:text-neutral-500 dark:hover:text-neutral-400"
           >
             {social.icon}
           </a>
@@ -45,7 +44,7 @@ export default () => (
           href="https://github.com/harshhhdev/react-pointers/blob/master/README.md"
           target="_blank"
           rel="noreferrer"
-          className="group ml-3 flex items-center rounded-lg bg-neutral-200 px-4 py-3 text-sm transition-colors hover:bg-neutral-300 active:bg-neutral-400/50"
+          className="group ml-3 flex items-center rounded-lg bg-neutral-200 px-4 py-3 text-sm transition-colors hover:bg-neutral-300 active:bg-neutral-400/50 dark:bg-neutral-800 dark:hover:bg-neutral-700/75"
         >
           Documentation
           <FiArrowRight className="ml-1.5 transition-transform group-hover:translate-x-0.5" />

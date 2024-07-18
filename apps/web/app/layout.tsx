@@ -117,7 +117,7 @@ export default (({ children }) => (
         inter.variable,
         sohne.variable,
         fira_code.variable,
-        "bg-slate-50 dark:bg-slate-950",
+        "bg-neutral-50 dark:bg-neutral-950",
       )}
     >
       <Providers>{children}</Providers>

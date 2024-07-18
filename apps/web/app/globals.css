@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --sh-identifier: #242424;
+  --sh-keyword: #f47067;
+  --sh-string: #00a99a;
+  --sh-class: #8d85ff;
+  --sh-property: #4e8fdf;
+  --sh-entity: #66adff;
+  --sh-jsxliterals: #bf7db6;
+  --sh-sign: #7c7c7c;
+  --sh-comment: #7c7c7c;
+}
+
+:root.dark {
+  --sh-identifier: #e6e6e6;
+
+  .dashed {
+    background: repeating-linear-gradient(
+      45deg,
+      #262626 0px,
+      #262626 6px,
+      transparent 6px,
+      transparent 9px
+    );
+  }
+}
+
 html {
   scroll-behavior: smooth !important;
 }
@@ -45,7 +71,6 @@ h3,
 h4,
 p,
 a,
-span,
 button,
 input,
 li {
