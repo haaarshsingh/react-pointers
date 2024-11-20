@@ -1,15 +1,36 @@
 ---
+import '../styles/global.css'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>React Pointers</title>
+  </head>
+  <body>
+    <header class="w-full flex flex-col justify-center items-center">
+      <h1 class="text-4xl font-bold tracking-tight">React Pointers</h1>
+      <p class="text-neutral-600 mt-1 tracking-tight">Composable and headless cursors for React.</p>
+			<div>
+				<a href="#installation">
+					Get Started
+				</a>
+				<a href="https://github.com/haaarshsingh/react-pointers" target="_blank" rel="noreferrer">
+					GitHub
+				</a>
+			</div>
+		</header>
+    <main>
+			<section>
+				<h2>Installation</h2>
+				<code>npm install react-pointers<button aria-label="Copy"></button></code>
+			</section>
+		</main>
+    <footer>
+      <span>Built by <a href="https://harshsingh.xyz">Harsh Singh</a></span>
+    </footer>
+  </body>
 </html>
