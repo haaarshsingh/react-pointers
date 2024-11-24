@@ -1,0 +1,73 @@
+import Buttons from "../components/Buttons";
+
+## Installation
+
+```
+npm install react-pointers
+```
+
+## Quick Start
+
+Wrap your application within the Provider:
+
+```jsx
+import { PointerProvider } from "react-pointers";
+
+// ...
+
+function App() {
+  return <PointerProvider></PointerProvider>;
+}
+```
+
+Add the `Pointer` component somewhere in your application and pass in the config. For a full list of options, check out the [API Reference](https://github.com/haaarshsingh/react-pointers?tab=readme-ov-file#API-Reference).
+
+```jsx
+const config = [
+  {
+    selector: [".custom-button"], // Apply to elements with this class
+    path: "/cursors/pixel-cursor.png", // Path to cursor image
+    hotspotX: 16, // Hotspot X coordinate (optional, default: 0)
+    hotspotY: 16, // Hotspot Y coordinate (optional, default: 0)
+    fallback: "pointer", // Fallback cursor style (optional, default: "auto")
+  },
+];
+
+return <Pointer config={config} />;
+```
+
+## Use Cursor
+
+The `useCursor()` hook allows programmatic control of cursors:
+
+```jsx
+import { useState } from "react";
+import { useCursor } from "custom-cursor-lib";
+
+function App() {
+  const [enabled, setEnabled] = useState(false);
+
+  useCursor(
+    ".drag",
+    enabled ? "/cursors/hand.png" : null, // Cursor path based on state
+    16,
+    16,
+    "pointer",
+  );
+
+  return (
+    <div>
+      <button onClick={() => setEnabled(!enabled)}>
+        {enabled ? "Disable" : "Enable"} Custom Cursor
+      </button>
+      <div className="drag">Drag me</div>
+    </div>
+  );
+}
+```
+
+## Examples
+
+Here are some buttons with custom cursor actions:
+
+<Buttons />
