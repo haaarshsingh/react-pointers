@@ -5,6 +5,7 @@ import Buttons from "../components/Buttons.astro";
 ```
 <script src="https://cdn.jsdelivr.net/npm/cursor-js@1.0.0/dist/index.min.js"></script>
 ```
+
 ```
 npm install cursor-js
 ```
@@ -16,7 +17,7 @@ Inside a script tag, create a configuration object for your cursors. For a full 
 ```js
 const config = [
   {
-    selectors: ["a", "button", ".custom-button"], // Apply these elements
+    selectors: ["a", "button", ".custom-button"], // Apply to these selectors
     path: "/pointer.png", // Path to pointer image
     hotspotX: 16, // Hotspot X coordinate (optional, default: 0)
     hotspotY: 16, // Hotspot Y coordinate (optional, default: 0)
@@ -43,7 +44,7 @@ import { CursorProvider } from "cursor-js";
 function App() {
   return (
     <CursorProvider>
-      
+
     </CursorProvider>;
   )
 }
@@ -52,7 +53,9 @@ function App() {
 Add the `Pointer` component somewhere in your application and pass in the config.
 
 ```jsx
-const config = [/* ... */];
+const config = [
+  /* ... */
+];
 return <Pointer config={config} />;
 ```
 
