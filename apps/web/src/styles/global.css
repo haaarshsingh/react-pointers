@@ -40,7 +40,11 @@ p > code {
 }
 
 p > a {
-  @apply text-sky-600 hover:underline;
+  @apply text-sky-600 hover:underline dark:text-sky-500;
+}
+
+::selection {
+  @apply bg-neutral-950/20 dark:bg-neutral-50/20;
 }
 
 .copy-code {
