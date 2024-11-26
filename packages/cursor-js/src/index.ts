@@ -4,7 +4,7 @@ import type { Config } from './types'
  * Apply custom cursors to elements.
  * @param config Array of cursor configurations
  */
-export const applyCustomCursors = (config: Config[]): void => {
+export const applyCursors = (config: Config[]): void => {
   config.forEach(
     ({
       selectors,
@@ -20,11 +20,11 @@ export const applyCustomCursors = (config: Config[]): void => {
 
       const cursorUrl = `${cursorPath} ${hotspotX} ${hotspotY}`
 
-      selectors.forEach((singleSelector) => {
-        const elements = document.querySelectorAll(singleSelector)
+      selectors.forEach((s) => {
+        const elements = document.querySelectorAll(s)
 
         if (!elements.length) {
-          console.warn(`No elements match the selector: "${singleSelector}"`)
+          console.warn(`No elements match the selector: "${s}"`)
           return
         }
 

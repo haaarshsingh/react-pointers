@@ -2,7 +2,7 @@ export type Config = {
   /**
    * The selector(s) to apply the custom cursor to
    */
-  selectors: string[]
+  selectors?: string[]
   /**
    * The image path of the cursor
    */
@@ -22,4 +22,9 @@ export type Config = {
    * @default auto
    */
   fallback?: string
+  /**
+   * Set cursor to be the default cursor
+   * @default false
+   */
+  defaultCursor?: boolean
 }

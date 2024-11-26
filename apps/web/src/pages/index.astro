@@ -1,6 +1,17 @@
 ---
 import '../styles/global.css'
 import Content from '../content/index.mdx'
+
+import { applyCursors } from 'cursor-js'
+
+applyCursors([
+  {
+    cursorPath: '/cursors/arrow.png',
+    hotspotX: 16,
+    hotspotY: 16,
+    defaultCursor: true,
+  },
+])
 ---
 
 <html lang='en'>

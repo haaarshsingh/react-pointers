@@ -1,12 +1,42 @@
 {
   "name": "cursor-js",
-  "module": "index.ts",
-  "type": "module",
-  "devDependencies": {
-    "@types/bun": "latest",
-    "@types/node": "^22.9.4"
+  "version": "1.0.0",
+  "description": "Fast, composable, and headless custom cursors.",
+  "author": "haaarshsingh",
+  "license": "MPL-2.0",
+  "repository": "haaarshsingh/cursor-js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "source": "src/index.ts",
+  "keywords": [
+    "cursor",
+    "animated cursor",
+    "headless",
+    "cursor.js"
+  ],
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=10"
   },
-  "peerDependencies": {
-    "typescript": "^5.7.2"
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "build": "microbundle-crl --no-compress --format modern,cjs --css-modules false",
+    "dev": "microbundle-crl watch --no-compress --format modern,cjs --css-modules false",
+    "publish-packages": "turbo run build lint test && changeset version && changeset publish"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-unicode-property-regex": "^7.18.6",
+    "@changesets/cli": "^2.27.1",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@turbo/gen": "^1.11.3",
+    "@types/eslint": "^8.56.1",
+    "@types/node": "^20.10.6",
+    "eslint": "^8.56.0",
+    "microbundle-crl": "^0.13.11",
+    "typescript": "^5.3.3"
   }
 }
